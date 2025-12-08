@@ -12,23 +12,72 @@ vlan 68
 name Mkt
 
 int range gig1/0/2-3
-channel-group 1 mode active
+channel-group 1 mode desirable
 interface port-channel 1
+switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68
 
 int range gig1/0/4-5
-channel-group 2 mode active
+channel-group 2 mode desirable
 interface port-channel 2
+switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68
 
 
 interface range gig1/0/7-8
-channel-group 3 mode active
+channel-group 3 mode desirable
 interface port-channel 3
+switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68
+
+vtp mode server
+vtp domain sureste.com
+
+spanning-tree vlan 65
+
+int vlan 65
+ip add 148.60.128.33 255.255.255.240
+no shut
+
+ip dhcp excluded-address 148.60.128.33
+ip dhcp excluded-address 148.60.128.49
+ip dhcp excluded-address 148.60.128.65
+ip dhcp excluded-address 148.60.128.81
+
+ip dhcp pool Ventas
+network 148.60.128.32 255.255.255.240
+default-router 148.60.128.33
+
+ip dhcp pool TI
+network 148.60.128.48 255.255.255.240
+default-router 148.60.128.49
+
+ip dhcp pool Compras
+network 148.60.128.64 255.255.255.240
+default-router 148.60.128.65
+
+ip dhcp pool Mkt
+network 148.60.128.80 255.255.255.240
+default-router 148.60.128.81
+
+int vlan 65
+ip add 148.60.128.33 255.255.255.240
+no shut
+
+int vlan 66
+ip add 148.60.128.49 255.255.255.240
+no shut
+
+int vlan 67
+ip add 148.60.128.65 255.255.255.240
+no shut
+
+int vlan 68
+ip add 148.60.128.81 255.255.255.240
+no shut
