@@ -13,4 +13,44 @@ exit
 
 interface port-channel 1
 sw mo tr
+<<<<<<< HEAD
 sw trunk allowed vlan 33,34,35,36,37
+
+
+interface g1/0/3
+sw mo tru 
+sw trunk allowed vlan 33,34,35,36,37
+
+
+interface g1/0/4
+sw mo tru 
+sw trunk allowed vlan 33,34,35,36,37
+
+
+interface range g1/0/5-9
+sw mo acc 
+sw acc vlan 33
+
+interface range g1/0/10-13
+sw mo acc 
+sw acc vlan 34
+
+interface range g1/0/14-17
+sw mo acc 
+sw acc vlan 35
+
+interface range g1/0/18-22
+sw mo acc 
+sw acc vlan 36
+
+interface range g1/0/23-24
+sw mo acc 
+sw acc vlan 37
+
+ip default-gateway 148.60.192.1
+
+vtp mode client
+vtp domain centro.com
+=======
+sw trunk allowed vlan 33,34,35,36,37
+>>>>>>> 653172237f70b6cf8ef4c8c077526f8d8838fc44
