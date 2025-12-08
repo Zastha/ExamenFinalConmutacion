@@ -1,0 +1,20 @@
+ena
+conf t
+hostname Yumkaax
+
+int gig0/0
+ip add 148.60.128.2 255.255.255.240
+no shut
+
+int gig0/1
+ip add 148.60.128.18 255.255.255.252
+no shut
+
+int gig0/0
+standby version 2
+standby 1 ip 148.60.128.3
+standby 1 priority 100
+
+int s0/3/0
+ip add 148.60.128.21 255.255.255.252
+no shut

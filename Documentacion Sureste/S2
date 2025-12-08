@@ -1,0 +1,33 @@
+ena
+conf t
+hostname S2
+
+vlan 65
+name Ventas
+vlan 66
+name TI
+vlan 67
+name Compras
+vlan 68
+name Mkt
+
+int range gig1/0/2-3
+channel-group 1 mode active
+interface port-channel 1
+switchport trunk  encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+
+interface range gig1/0/7-8
+channel-group 4 mode active
+interface port-channel 4
+switchport trunk  encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68
+
+interface range gig1/0/4-5
+channel-group 5 mode active
+interface port-channel 5
+switchport trunk  encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68

@@ -1,0 +1,19 @@
+ena
+conf t
+hostname Itzamna
+
+int gig0/0
+ip add 148.60.128.1 255.255.255.240
+no shut
+
+int gig0/1
+ip add 148.60.128.17 255.255.255.252
+no shut
+
+standby version 2
+standby 1 ip 148.60.128.3
+standby 1 priority preempt
+
+int s0/2/0
+ip add 148.60.128.25 255.255.255.252
+no shut
