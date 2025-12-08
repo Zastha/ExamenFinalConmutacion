@@ -1,0 +1,17 @@
+en
+conf t
+
+
+hostname MS1
+
+int vlan 33
+ip address 148.60.192.3 255.255.248.0
+
+interface range g1/0/1-2
+channel-group 1 mode active
+
+exit
+
+interface port-channel 1
+sw mo tr
+sw trunk allowed vlan 33,34,35,36,37
