@@ -1,0 +1,327 @@
+Examen Pedro.
+148.60.0.0/16
+
+Se configura SSH
+Configurar RIP para toda la red
+
+Configuracion:
+
+Routers: -------------------------------
+
+=== ElCabrito =========================
+
+ena
+conf t
+hostname ElCabrito
+
+// Conexion MSw 1
+int g0/2
+ip add 148.60.64.65 255.255.255.240
+no shut
+
+standby version 2
+standby 1 ip 148.60.64.68
+standby 1 priority 150
+standby 1 preempt
+
+// Conexion Router LaVaca
+int g0/1
+ip add 148.60.64.81 255.255.255.252
+no shut
+
+// Conexion Router Cloud
+int g0/0
+ip add 148.60.64.65 255.255.255.252
+no shut
+
+=== LaVaca ============================
+
+ena
+conf t
+hostname LaVaca
+
+// Conexion MSw 2
+int g0/2
+ip add 148.60.64.66 255.255.255.240
+no shut
+
+standby version 2
+standby 1 ip 148.60.64.68
+standby 1 priority 150
+standby 1 preempt
+
+// Conexion Router ElCabrito
+int g0/1
+ip add 148.60.64.82 255.255.255.252
+no shut
+
+// Conexion Router LaSilla
+int g0/0
+ip add 148.60.64.85 255.255.255.252
+no shut
+
+=== LaSilla =========================
+
+ena
+conf t
+hostname LaSilla
+
+// Conexion MSw 3
+int g0/2
+ip add 148.60.64.67 255.255.255.240
+no shut
+
+standby version 2
+standby 1 ip 148.60.64.68
+standby 1 priority 150
+standby 1 preempt
+
+// Conexion Router LaVaca
+int g0/0
+ip add 148.60.64.86 255.255.255.252
+no shut
+
+_________________________________________
+Switches: -------------------------------
+
+=== Mult Sw 1 =========================
+ena
+conf t
+hostname MultiSwitch1
+
+// Conexion a Router ElCabrito
+int g1/0/22
+no sw
+ip add 148.60.64.69 255.255.255.240
+no shut
+
+// Conexion a MS2
+int g1/0/23
+no sw
+ip add 148.60.64.89 255.255.255.252
+no shut
+
+// Conexion a MS4
+int g1/0/24
+no sw
+ip add 148.60.64.97 255.255.255.252
+no shut
+
+//Vlan 100 - Servicios
+vlan 100
+name Servicios
+
+int range g1/0/10-12
+spanning-tree portfast
+sw mode acc
+sw acc vlan 100
+exit
+
+int vlan 100
+ip add 148.60.64.49 255.255.255.240
+
+//vlan 99 - Compras
+vlan 99
+name Compras
+
+int range g1/0/7-9
+spanning-tree portfast
+sw mode acc
+sw acc vlan 99
+exit
+
+int vlan 99
+ip add 148.60.64.33	255.255.255.240
+
+=== Mult Sw 2 =========================
+ena
+conf t
+hostname MultiSwitch2
+
+// Conexion a Router LaVaca
+int g1/0/23
+no sw
+ip add 148.60.64.90 255.255.255.252
+no shut
+
+// Conexion a MS1
+int g1/0/23
+no sw
+ip add 148.60.64.82 255.255.255.252
+no shut
+
+// Conexion a MS3
+int g1/0/24
+no sw
+ip add 148.60.64.93 255.255.255.252
+no shut
+
+=== Mult Sw 3 =========================
+ena
+conf t
+hostname MultiSwitch3
+
+// Conexion a Router LaSilla
+int g1/0/22
+no sw
+ip add 148.60.64.71 255.255.255.240
+no shut
+
+// Conexion a MS2
+int g1/0/24
+no sw
+ip add 148.60.64.94 255.255.255.252
+no shut
+
+// Conexion a MS4
+int g1/0/23
+no sw
+ip add 148.60.64.101 255.255.255.252
+no shut
+
+// Vlan 98 - Ventas
+vlan 98
+name Ventas
+
+int range g1/0/4-6
+spanning-tree portfast
+sw mode acc
+sw acc vlan 98
+exit
+
+int vlan 98
+ip add 148.60.64.17 255.255.255.240
+
+// Vlan 97 - Gestion de TI
+vlan 97
+name Gestion_de_TI
+
+int range g1/0/1-3
+spanning-tree portfast
+sw mode acc
+sw acc vlan 97
+exit
+
+int vlan 97
+ip add 148.60.64.1 255.255.255.240
+
+// Vlan 99 - Compras
+vlan 99
+name Compras
+
+int range g1/0/7-9
+spanning-tree portfast
+sw mode acc
+sw acc vlan 99
+exit
+
+int vlan 99
+ip add 148.60.64.34	255.255.255.240
+
+=== Mult Sw 4 =========================
+ena
+conf t
+hostname MultiSwitch4
+
+// Conexion a MS1
+int g1/0/24
+no sw
+ip add 148.60.64.98 255.255.255.252
+no shut
+
+// Conexion a MS3
+int g1/0/23
+no sw
+ip add 148.60.64.102 255.255.255.252
+no shut
+
+// Vlan 98 - Ventas
+vlan 98
+name Ventas
+
+int range g1/0/1-10
+spanning-tree portfast
+sw mode acc
+sw acc vlan 98
+exit
+
+int vlan 98
+ip add 148.60.64.17 255.255.255.240
+
+// Vlan 99 - Compras
+vlan 99
+name Compras
+
+int range g1/0/11-14
+spanning-tree portfast
+sw mode acc
+sw acc vlan 99
+exit
+
+int vlan 99
+ip add 148.60.64.35	255.255.255.240
+
+//Vlan 100 Servicios
+vlan 100
+name Servicios
+
+int range g1/0/15-19
+spanning-tree portfast
+sw mode acc
+sw acc vlan 100
+exit
+
+int vlan 100
+ip add 148.60.64.50 255.255.255.240
+
+
+_____________________________________
+-------------------------------------
+// VLANS!
+vlan 97
+name Gestion_de_TI
+
+int range g1/0/1-3
+sw mode acc
+sw acc vlan 97
+exit
+
+int vlan 97
+ip add 148.60.64.1 255.255.255.240
+-------------------------------------
+vlan 98
+name Ventas
+
+int range g1/0/4-6
+sw mode acc
+sw acc vlan 98
+exit
+
+int vlan 98
+ip add 148.60.64.17 255.255.255.240
+-------------------------------------
+vlan 99
+name Compras
+
+int range g1/0/7-9
+sw mode acc
+sw acc vlan 99
+exit
+
+int vlan 99
+ip add 148.60.64.33	255.255.255.240
+-------------------------------------
+vlan 100
+name Servicios
+
+int range g1/0/10-12
+sw mode acc
+sw acc vlan 100
+exit
+
+int vlan 100
+ip add 148.60.64.49 255.255.255.240
+
+
+int g1/0/
+spanning-tree portfast
