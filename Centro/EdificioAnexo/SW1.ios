@@ -1,0 +1,37 @@
+en
+conf t
+
+int vlan 33
+ip address 148.60.192.5 255.255.248.0
+no shut
+
+int fa0/1
+sw mo trunk 
+sw trunk vlan allowed 33,34,35,36,37
+
+int range fa0/2-5
+sw mo acc
+sw acc vlan 33
+
+int range fa0/6-10
+sw mo acc
+sw acc vlan 34
+
+int range fa0/11-15
+sw mo acc
+sw acc vlan 35
+
+
+int range fa0/16-20
+sw mo acc
+sw acc vlan 36
+
+
+int range fa0/21-24
+sw mo acc
+sw acc vlan 37
+
+
+
+vtp mode client
+vtp domain centro.com
