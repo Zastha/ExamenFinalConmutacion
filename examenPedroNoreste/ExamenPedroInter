@@ -61,7 +61,6 @@ ip add 148.60.64.85 255.255.255.252
 no shut
 
 === LaSilla =========================
-
 ena
 conf t
 hostname LaSilla
@@ -321,3 +320,8 @@ network 148.60.64.48
 
 network 148.60.64.80
 network 148.60.64.84
+
+
+int g1/0/2
+spanning-tree portfast
+exit
