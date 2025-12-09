@@ -1,0 +1,65 @@
+ena
+conf t
+hostname MultiSwitch3
+
+ip default-gateway 148.60.64.68
+
+int range g1/0/22-24
+sw
+sw tr encapsulation dot1q
+sw mode tr
+
+// Vlan 97 - Gestion de TI
+vlan 97
+name Gestion_de_TI
+
+int range g1/0/1-3
+spanning-tree portfast
+sw mode acc
+sw acc vlan 97
+exit
+
+int vlan 97
+ip add 148.60.64.7 255.255.255.240
+
+// Vlan 98 - Ventas
+vlan 98
+name Ventas
+
+int range g1/0/4-6
+spanning-tree portfast
+sw mode acc
+sw acc vlan 98
+exit
+
+int vlan 98
+ip add 148.60.64.17 255.255.255.240
+
+// Vlan 99 - Compras
+vlan 99
+name Compras
+
+int range g1/0/7-9
+spanning-tree portfast
+sw mode acc
+sw acc vlan 99
+exit
+
+int vlan 99
+ip add 148.60.64.34	255.255.255.240
+
+//Vlan 100 - Servicios
+vlan 100
+name Servicios
+
+// Config SSH
+ip domain-name juanmark.com 
+crypto key generate rsa 
+1024 
+username juan secret mark
+line vty 0 15 
+transport input ssh 
+login local 
+exit 
+
+ip ssh version 2

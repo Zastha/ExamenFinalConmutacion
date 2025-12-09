@@ -1,0 +1,56 @@
+##Switch 1
+vtp mode client
+vtp domain VTP_SERVER
+//Vlan de cada PC
+int f0/3
+sw mo acc
+sw acc vlan 9
+//Trunking
+int f0/1
+sw mo Trunk
+sw trunk allowed vlan 5,6,7,9
+int gig0/1
+sw mo trunk
+sw trunk allowed vlan 5,6,7,9
+
+ip default-gateway 148.60.0.1
+//ipv6 default-gateway 2006:AFEA:B0CA:1::1
+
+//SSH
+SW1(config)#
+  hostname SW1
+  ip domain name juanmark.com
+  crypto key generate rsa
+  username juan secret mark
+  line vty 0 15
+  transport input ssh
+  login local
+  exit
+  ip ssh version 2
+
+//IP VLAN 9
+int vlan 9
+ip add 148.60.0.3 255.255.240.0
+
+//Optimizar spanning tree
+  int f0/3
+  spanning-tree portfast
+  spanning-tree vlan 9
+
+//Port Security
+interface range f0/4-24
+shutdown
+interface range g0/2
+shutdown
+
+//Port Fast
+interface f0/3
+spanning-tree portfast
+
+//MAC Limit
+interface f0/3
+switchport port-security maximum 1
+
+//Violation mode
+interface f0/3
+switchport port-security violation shutdown

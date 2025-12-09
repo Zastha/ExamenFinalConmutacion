@@ -1,0 +1,79 @@
+## VTP SERVER SWITCH (SWITCH 2)
+//Configurar VTP SERVER
+enable
+conf t
+vlan 9
+name Gestion_De_TI
+vlan 5
+name Mkt
+vlan 6
+name Ventas
+vlan 7
+name Compras
+vtp mode server
+vtp domain VTP_SERVER
+
+//Vlan de cada PC
+int f0/5
+sw mo acc
+sw acc vlan 6
+int f0/4
+sw mo acc
+sw acc vlan 7
+int f0/3
+sw mo acc
+sw acc vlan 5
+
+ip default-gateway 148.60.0.1
+//ipv6 default-gateway 2006:AFEA:B0CA:1::1
+
+//IP VLAN 9
+//int vlan 9
+//ip add 148.60.0.4 255.255.240.0
+
+//IP VLAN 5
+int vlan 5
+ip add 148.60.16.2 255.255.240.0
+
+//Trunking
+int f0/1
+sw mo Trunk
+sw trunk allowed vlan 5,6,7,9
+int f0/2
+sw mo Trunk
+sw trunk allowed vlan 5,6,7,9
+
+//SSH
+  ip domain name juanmark.com
+  hostname SW2
+  crypto key generate rsa
+  username juan secret mark
+  line vty 0 15
+  transport input ssh
+  login local
+  exit
+  ip ssh version 2
+
+//Optimizar spanning tree
+int range f0/3-5
+spanning-tree portfast
+spanning-tree vlan 9
+
+//Port Security
+
+int range f0/6-24
+shutdown
+int range g0/1-2
+shutdown
+
+//Port Fast
+interface range f0/3-5
+spanning-tree portfast
+
+//MAC Limit
+interface range f0/3-5
+switchport port-security maximum 1
+
+//Violation mode
+interface range f0/3-5
+switchport port-security violation shutdown
