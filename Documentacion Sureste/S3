@@ -35,20 +35,8 @@ switchport trunk  encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68
 
-int vlan 65
-ip add 148.60.128.34 255.255.255.240
-no shut
-
-int vlan 66
-ip add 148.60.128.50 255.255.255.240
-no shut
-
-int vlan 67
-ip add 148.60.128.66 255.255.255.240
-no shut
-
-int vlan 68
-ip add 148.60.128.82 255.255.255.240
+int vlan 69
+ip add 148.60.128.99 255.255.255.240
 no shut
 
 int gig1/0/10
@@ -62,3 +50,7 @@ switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68
+
+int vlan 69
+ip add 148.60.128.99 255.255.255.240
+no shut
