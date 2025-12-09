@@ -8,17 +8,29 @@ hostname MS1
 !!!Asignacion de 
 int vlan 33
 ip address 148.60.192.3 255.255.248.0
+no shut
 
-!!!Configuracion de Etherchannel a SW0
+!!!Habilitar tecnologia DAI 
+ip dhcp snooping
+ip dhcp snooping vlan 33-37
+ip arp inspection vlan 33-37
+
+!!!Configuracion de Etherchannel a SW0 con Trust para DHCP Server
 interface range g1/0/1-2
 channel-group 1 mode active
+ip dhcp snooping trust
+ip arp inspection trust
 
 exit
+
+
 
 interface port-channel 1
 sw mo tr
 sw trunk allowed vlan 33,34,35,36,37
+
 exit
+
 
 !!!Conexion a SW1
 interface range g1/0/3
