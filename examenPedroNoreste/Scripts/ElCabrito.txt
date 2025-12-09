@@ -30,15 +30,15 @@ ip add 148.60.64.1 255.255.255.240
 
 int g0/2.98
 encapsulation dot1q 98
-ip add 148.60.64.26 255.255.255.240
+ip add 148.60.64.30 255.255.255.240
 
 int g0/2.99
 encapsulation dot1q 99
-ip add 148.60.64.43 255.255.255.240
+ip add 148.60.64.46 255.255.255.240
 
 int g0/2.100
 encapsulation dot1q 100
-ip add 148.60.64.58 255.255.255.240
+ip add 148.60.64.62 255.255.255.240
 
 
 //Config RIP
@@ -65,3 +65,20 @@ login local
 exit 
 
 ip ssh version 2
+
+!!HSRP
+int g0/2.97
+standby 1 ip 148.60.64.8
+standby 1 priority 150
+
+int g0/2.98
+standby 2 ip 148.60.64.17 
+standby 2 priority 150
+
+int g0/2.99
+standby 3 ip 148.60.64.33
+standby 3 priority 150
+
+int g0/2.100
+standby 4 ip 148.60.64.49
+standby 4 priority 150

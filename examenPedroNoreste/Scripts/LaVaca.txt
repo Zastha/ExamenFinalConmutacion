@@ -33,7 +33,7 @@ standby 1 preempt
 
 int g0/2.98
 encapsulation dot1q 98
-ip add 148.60.64.28 255.255.255.240
+ip add 148.60.64.29 255.255.255.240
 
 int g0/2.99
 encapsulation dot1q 99
@@ -41,7 +41,7 @@ ip add 148.60.64.45 255.255.255.240
 
 int g0/2.100
 encapsulation dot1q 100
-ip add 148.60.64.56 255.255.255.240
+ip add 148.60.64.61 255.255.255.240
 
 // Conexion Router LaSilla
 int g0/0
@@ -72,3 +72,20 @@ login local
 exit 
 
 ip ssh version 2
+
+!!HSRP
+int g0/2.97
+standby 1 ip 148.60.64.8
+standby 1 priority 150
+
+int g0/2.98
+standby 2 ip 148.60.64.17 
+standby 2 priority 150
+
+int g0/2.99
+standby 3 ip 148.60.64.33
+standby 3 priority 150
+
+int g0/2.100
+standby 4 ip 148.60.64.49
+standby 4 priority 150

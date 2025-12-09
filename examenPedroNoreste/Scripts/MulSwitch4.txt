@@ -7,7 +7,7 @@ vlan 97
 name Gestion_de_TI
 
 int vlan 97
-ip add 148.60.64.8 255.255.255.240
+ip add 148.60.64.9 255.255.255.240
 
 // Vlan 98 - Ventas
 vlan 98
@@ -24,6 +24,8 @@ int range g1/0/23-24
 sw
 sw tr encapsulation dot1q
 sw mode tr
+switchport trunk allowed vlan 1
+switchport trunk allowed vlan 97-100
 
 int vlan 98
 ip add 148.60.64.17 255.255.255.240

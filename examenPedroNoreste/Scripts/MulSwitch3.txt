@@ -2,12 +2,14 @@ ena
 conf t
 hostname MultiSwitch3
 
-ip default-gateway 148.60.64.68
+ip default-gateway 148.60.64.8
 
 int range g1/0/22-24
 sw
 sw tr encapsulation dot1q
 sw mode tr
+switchport trunk allowed vlan 1
+switchport trunk allowed vlan 97-100
 
 // Vlan 97 - Gestion de TI
 vlan 97
