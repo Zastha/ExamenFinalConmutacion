@@ -17,13 +17,25 @@ interface port-channel 1
 sw mo tr
 sw trunk allowed vlan 33,34,35,36,37
 
-!!!Conexion a SW0
+!!!Conexion a SW0 
 interface g1/0/3
 sw mo tru 
 sw trunk allowed vlan 33,34,35,36,37
 
-!!!Conexion a LW Access Point
+!!!Habilitar tecnologia DAI 
+ip dhcp snooping
+ip dhcp snooping vlan 33-37
+ip arp inspection vlan 33-37
+
+!!!Conexion a RouterCentro con Trust para DHCP Server
 interface g1/0/4
+sw mo trunk
+sw trunk allowed vlan 33,34,35,36,37
+ip dhcp snooping trust
+ip arp inspection trust
+
+!!!Conexion a LW Access Point
+interface g1/0/5
 sw mo tru 
 sw trunk native vlan 34
 
