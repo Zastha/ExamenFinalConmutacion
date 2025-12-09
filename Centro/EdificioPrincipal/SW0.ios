@@ -1,14 +1,21 @@
 en
 conf t
 
+hostname SW0
+
+
+!!!Asignacion de IP para Vlan de Gestion
 int vlan 33
 ip address 148.60.192.4 255.255.248.0
 no shut
 
+!!!Conexion a MS0
 int fa0/1
 sw mo trunk
 sw trunk vlan allowed 33,34,35,36,37
 
+
+!!!Configuracion de puertos a dispositivos finales
 int range fa0/2-5
 sw mo acc
 sw acc vlan 33
@@ -32,6 +39,12 @@ sw mo acc
 sw acc vlan 37
 
 
+!!!Configuracion de Seguridad de puerto y direcciones mac
+int range g1/0/2-24
+switchport port-security mac-address sticky
+switchport port-security violation restrict
+
+ip default-gateway 148.60.192.1
 
 vtp mode client
 vtp domain centro.com
