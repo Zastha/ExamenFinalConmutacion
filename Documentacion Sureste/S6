@@ -35,6 +35,19 @@ switchport trunk  encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68,69
 
+int range gig1/0/10
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 65,66,67,68,69
+
+int range gig1/0/11
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 65,66,67,68,69
+
+vtp mode client
+vtp domain sureste.com
+
 int vlan 69
 ip add 148.60.128.102 255.255.255.240
 no shut

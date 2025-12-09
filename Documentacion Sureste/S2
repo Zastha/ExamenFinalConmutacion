@@ -44,7 +44,7 @@ spanning-tree vlan 66
 
 int gig1/0/6
 switchport nonegotiate
-switchport trunk  encapsulation dot1q
+switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68,69
 

@@ -40,6 +40,9 @@ int range f0/4-16
 switchport mode access
 switchport port-security mac-address sticky
 
+vtp mode client
+vtp domain sureste.com
+
 int vlan 69
 ip add 148.60.128.104 255.255.255.240
 no shut

@@ -5,6 +5,10 @@ hostname Itzamna
 int gig0/0
 ip add 148.60.128.1 255.255.255.240
 no shut
+switchport nonegotiate
+switchport trunk  encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 65,66,67,68,69
 
 int gig0/1
 ip add 148.60.128.17 255.255.255.252
