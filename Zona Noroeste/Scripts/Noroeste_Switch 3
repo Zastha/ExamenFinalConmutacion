@@ -1,0 +1,57 @@
+##Switch 3
+vtp mode client
+vtp domain VTP_SERVER
+//Vlan de cada PC
+int f0/4
+sw mo acc
+sw acc vlan 9
+int f0/3
+sw mo acc
+sw acc vlan 7
+int f0/2
+sw mo acc
+sw acc vlan 6
+
+ip default-gateway 148.60.0.1
+//ipv6 default-gateway 2006:AFEA:B0CA:1::1
+
+//SSH
+  ip domain name juanmark.com
+  hostname SW3
+  crypto key generate rsa
+  username juan secret mark
+  line vty 0 15
+  transport input ssh
+  login local
+  exit
+  ip ssh version 2
+
+//IP VLAN 9
+int vlan 9
+ip add 148.60.0.5 255.255.240.0
+
+
+//Optimizar spanning tree
+  int range f0/2-4
+  spanning-tree portfast
+  spanning-tree vlan 9
+
+
+//Port Security
+
+int range f0/5-24
+shutdown
+int range g0/1-2
+shutdown
+
+//Port Fast
+interface range f0/2-4
+spanning-tree portfast
+
+//MAC Limit
+interface range f0/2-4
+switchport port-security maximum 1
+
+//Violation mode
+interface range f0/2-4
+switchport port-security violation shutdown
