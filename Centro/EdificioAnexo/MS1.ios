@@ -4,9 +4,12 @@ conf t
 
 hostname MS1
 
+
+!!!Asignacion de 
 int vlan 33
 ip address 148.60.192.3 255.255.248.0
 
+!!!Configuracion de Etherchannel a SW0
 interface range g1/0/1-2
 channel-group 1 mode active
 
@@ -14,17 +17,21 @@ exit
 
 interface port-channel 1
 sw mo tr
-<<<<<<< HEAD
 sw trunk allowed vlan 33,34,35,36,37
 exit
 
-
+!!!Conexion a SW1
 interface range g1/0/3
 sw mo tru 
 sw trunk allowed vlan 33,34,35,36,37
 
+!!! Conexion a WLC
+int gig1/0/4
+sw mo trunk
+sw trunk native vlan 34
 
-interface range g1/0/4-9
+!!!Configuracion de Puertos a dispositivos finales
+interface range g1/0/5-9
 sw mo acc 
 sw acc vlan 33
 
@@ -44,10 +51,13 @@ interface range g1/0/23-24
 sw mo acc 
 sw acc vlan 37
 
+!!!Configuracion de Seguridad de puerto y direcciones mac
+int range g1/0/5-24
+switchport port-security mac-address sticky
+switchport port-security violation restrict
+
+
 ip default-gateway 148.60.192.1
 
-vtp mode server
+vtp mode client
 vtp domain centro.com
-=======
-sw trunk allowed vlan 33,34,35,36,37
->>>>>>> 653172237f70b6cf8ef4c8c077526f8d8838fc44
