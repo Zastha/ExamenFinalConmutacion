@@ -21,6 +21,6 @@ switchport trunk allowed vlan 65,66,67,68
 
 spanning-tree vlan 67
 
-int vlan 67
-ip add 148.60.128.65 255.255.255.240
+int vlan 69
+ip add 148.60.128.100 255.255.255.240
 no shut
