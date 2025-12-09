@@ -9,9 +9,11 @@ sw acc vlan 9
 int f0/1
 sw mo Trunk
 sw trunk allowed vlan 5,6,7,9
+switchport nonegotiate
 int gig0/1
 sw mo trunk
 sw trunk allowed vlan 5,6,7,9
+switchport nonegotiate
 
 ip default-gateway 148.60.0.1
 //ipv6 default-gateway 2006:AFEA:B0CA:1::1
@@ -37,6 +39,9 @@ ip add 148.60.0.3 255.255.240.0
   spanning-tree portfast
   spanning-tree vlan 9
 
+//Indicar como Root de VLAN 9
+spanning-tree vlan 9 root primary
+
 //Port Security
 interface range f0/4-24
 shutdown
@@ -54,3 +59,5 @@ switchport port-security maximum 1
 //Violation mode
 interface f0/3
 switchport port-security violation shutdown
+
+

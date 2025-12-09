@@ -28,20 +28,22 @@ ip default-gateway 148.60.0.1
 //ipv6 default-gateway 2006:AFEA:B0CA:1::1
 
 //IP VLAN 9
-//int vlan 9
-//ip add 148.60.0.4 255.255.240.0
+int vlan 9
+ip add 148.60.0.4 255.255.240.0
 
 //IP VLAN 5
 int vlan 5
-ip add 148.60.16.2 255.255.240.0
+no ip add
 
 //Trunking
 int f0/1
 sw mo Trunk
 sw trunk allowed vlan 5,6,7,9
+switchport nonegotiate
 int f0/2
 sw mo Trunk
 sw trunk allowed vlan 5,6,7,9
+switchport nonegotiate
 
 //SSH
   ip domain name juanmark.com
@@ -58,6 +60,9 @@ sw trunk allowed vlan 5,6,7,9
 int range f0/3-5
 spanning-tree portfast
 spanning-tree vlan 9
+
+//Indicar como Root de VLAN 5
+spanning-tree vlan 5 root primary
 
 //Port Security
 

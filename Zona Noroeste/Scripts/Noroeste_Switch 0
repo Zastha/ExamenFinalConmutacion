@@ -29,18 +29,16 @@ ip default-gateway 148.60.0.1
   ip ssh version 2
 
 //IPV4 VLAN 9
-//int vlan 9
-//ip add 148.60.0.2 255.255.240.0
-
-//IPV4 VLAN 6
-int vlan 6
-ip add 148.60.32.2
-
+int vlan 9
+ip add 148.60.0.2 255.255.240.0
 
 //Optimizar spanning tree
   int range f0/2-4
   spanning-tree portfast
   spanning-tree vlan 9
+
+//Indicar como Root de VLAN 6
+spanning-tree vlan 6 root primary
 
 //Port Security
 interface range f0/5-24
@@ -59,3 +57,7 @@ switchport port-security maximum 1
 //Violation mode
 interface range f0/2-4
 switchport port-security violation shutdown
+
+//Trunking
+switchport mode trunk
+switchport nonegotiate
