@@ -17,7 +17,7 @@ interface port-channel 7
 switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
+switchport trunk allowed vlan 65,66,67,68,69
 
 spanning-tree vlan 68
 

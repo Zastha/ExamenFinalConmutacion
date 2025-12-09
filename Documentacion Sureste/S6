@@ -17,7 +17,7 @@ interface port-channel 7
 switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
+switchport trunk allowed vlan 65,66,67,68,69
 
 interface range gig1/0/4-5
 channel-group 5 mode desirable
@@ -25,7 +25,7 @@ interface port-channel 5
 switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
+switchport trunk allowed vlan 65,66,67,68,69
 
 interface range gig1/0/7-8
 channel-group 3 mode desirable
@@ -33,4 +33,4 @@ interface port-channel 3
 switchport nonegotiate
 switchport trunk  encapsulation dot1q
 switchport mode trunk
-switchport trunk allowed vlan 65,66,67,68
+switchport trunk allowed vlan 65,66,67,68,69

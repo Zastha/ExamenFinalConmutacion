@@ -17,3 +17,23 @@ standby 1 priority preempt
 int s0/2/0
 ip add 148.60.128.25 255.255.255.252
 no shut
+
+int gig0/0.65
+encapsulation dot1q 65
+ip add 148.60.128.33 255.255.255.240
+no shut
+
+int gig0/0.66
+encapsulation dot1q 66
+ip add 148.60.128.49 255.255.255.240
+no shut
+
+int gig0/0.67
+encapsulation dot1q 67
+ip add 148.60.128.65 255.255.255.240
+no shut
+
+int gig0/0.68
+encapsulation dot1q 68
+ip add 148.60.128.81 255.255.255.240
+no shut
