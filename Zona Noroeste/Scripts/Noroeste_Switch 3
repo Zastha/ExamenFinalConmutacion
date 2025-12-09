@@ -27,9 +27,12 @@ ip default-gateway 148.60.0.1
   ip ssh version 2
 
 //IP VLAN 9
-int vlan 9
-ip add 148.60.0.5 255.255.240.0
+//int vlan 9
+//ip add 148.60.0.5 255.255.240.0
 
+//IP VLAN 7
+int vlan 7
+ip add 148.60.48.2 255.255.240.0
 
 //Optimizar spanning tree
   int range f0/2-4

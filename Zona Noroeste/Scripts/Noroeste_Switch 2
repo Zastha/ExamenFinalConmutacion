@@ -28,9 +28,12 @@ ip default-gateway 148.60.0.1
 //ipv6 default-gateway 2006:AFEA:B0CA:1::1
 
 //IP VLAN 9
-int vlan 9
-ip add 148.60.0.4 255.255.240.0
+//int vlan 9
+//ip add 148.60.0.4 255.255.240.0
 
+//IP VLAN 5
+int vlan 5
+ip add 148.60.16.2 255.255.240.0
 
 //Trunking
 int f0/1
