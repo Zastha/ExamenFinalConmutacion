@@ -57,3 +57,6 @@ login local
 exit 
 
 ip ssh version 2
+
+!!!spanning-tree
+spanning-tree vlan 99 root primary

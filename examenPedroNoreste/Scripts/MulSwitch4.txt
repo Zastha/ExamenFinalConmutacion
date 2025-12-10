@@ -6,8 +6,6 @@ hostname MultiSwitch4
 vlan 97
 name Gestion_de_TI
 
-int vlan 97
-ip add 148.60.64.9 255.255.255.240
 
 // Vlan 98 - Ventas
 vlan 98
@@ -19,6 +17,9 @@ sw mode acc
 sw acc vlan 98
 exit
 
+interface g1/0/22
+switchport mode access
+switchport access vlan 98
 
 int range g1/0/23-24
 sw
@@ -26,6 +27,9 @@ sw tr encapsulation dot1q
 sw mode tr
 switchport trunk allowed vlan 1
 switchport trunk allowed vlan 97-100
+
+int vlan 97
+ip add 148.60.64.9 255.255.255.240
 
 int vlan 98
 ip add 148.60.64.17 255.255.255.240
@@ -39,6 +43,15 @@ spanning-tree portfast
 sw mode acc
 sw acc vlan 99
 exit
+
+interface range g1/0/2-11
+shutdown
+int range g1/0/13-15
+shutdown
+int range g1/0/17-21
+shutdown
+int range  g1/1/1-4
+shutdown
 
 int vlan 99
 ip add 148.60.64.35	255.255.255.240
@@ -67,3 +80,47 @@ login local
 exit 
 
 ip ssh version 2
+
+!!!!DHCP
+ip dhcp excluded-address 148.60.64.1 148.60.64.3
+ip dhcp excluded-address 148.60.64.5 148.60.64.10
+ip dhcp excluded-address 148.60.64.17
+ip dhcp excluded-address 148.60.64.20 148.60.64.21
+ip dhcp excluded-address 148.60.64.28 148.60.64.30
+ip dhcp excluded-address 148.60.64.33
+ip dhcp excluded-address 148.60.64.44 148.60.64.46
+ip dhcp excluded-address 148.60.64.49
+ip dhcp excluded-address 148.60.64.60 148.60.64.62
+ip dhcp excluded-address 148.60.64.34
+ip dhcp excluded-address 148.60.64.50
+
+ip dhcp pool Gestion_de_TI
+network 148.60.64.0 255.255.255.240
+default-router 148.60.64.8 
+
+ip dhcp pool Ventas
+network 148.60.64.16 255.255.255.240
+default-router 148.60.64.17
+
+ip dhcp pool Compras
+network 148.60.64.32 255.255.255.240
+default-router 148.60.64.33
+
+ip dhcp pool Servicios
+network 148.60.64.48 255.255.255.240
+default-router 148.60.64.49
+
+interface Vlan97
+ ip address 148.60.64.9 255.255.255.240
+
+interface Vlan98
+ ip address 148.60.64.20 255.255.255.240
+!
+interface Vlan99
+ ip address 148.60.64.34 255.255.255.240
+
+interface Vlan100
+ ip address 148.60.64.50 255.255.255.240
+
+ !!!spanning tree
+ spanning-tree vlan 100 root primary

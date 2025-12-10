@@ -27,18 +27,23 @@ no ip add
 int g0/2.97
 encapsulation dot1q 97
 ip add 148.60.64.1 255.255.255.240
+ip helper-address 148.60.64.9
+
 
 int g0/2.98
 encapsulation dot1q 98
 ip add 148.60.64.30 255.255.255.240
+ip helper-address 148.60.64.9
 
 int g0/2.99
 encapsulation dot1q 99
 ip add 148.60.64.46 255.255.255.240
+ip helper-address 148.60.64.9
 
 int g0/2.100
 encapsulation dot1q 100
 ip add 148.60.64.62 255.255.255.240
+ip helper-address 148.60.64.9
 
 
 //Config RIP
