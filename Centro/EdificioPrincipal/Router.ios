@@ -5,6 +5,22 @@ hostname RouterCentro
 
 !!!Encapusulacion para route on a stick
 
+
+
+!!!Configuracion Inter-Regional
+int se0/1/0
+ip address 148.60.64.90 255.255.255.252
+
+int se0/1/1
+ip address 148.60.232.2 255.255.255.252
+
+  int se0/2/0
+  ip address 148.60.128.26 255.255.255.252
+
+
+
+
+
 int gig0/0.33
 encapsulation dot1Q 33
 ip add 148.60.192.1 255.255.248.0
