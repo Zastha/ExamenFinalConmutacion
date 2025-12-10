@@ -29,6 +29,9 @@ encapsulation dot1q 97
 ip address 148.60.64.1 255.255.255.240
 ip helper-address 148.60.64.9
 
+!!! Conexion a Centro
+int se0/0/0 
+ip address 148.60.64.89 255.255.255.252
 
 interface g0/2.98
 encapsulation dot1q 98
