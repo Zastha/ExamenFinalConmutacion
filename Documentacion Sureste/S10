@@ -29,8 +29,11 @@ switchport mode trunk
 switchport trunk allowed vlan 65,66,67,68,69
 
 int f0/16
-switchport mode access
-switchport access vlan 69
+switchport mode trunk
+switchport nonegotiate
+switchport trunk native vlan 69
+no shutdown
+
 no shut
 
 int range f0/17-24
