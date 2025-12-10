@@ -26,24 +26,32 @@ int gig0/0.65
 encapsulation dot1q 65
 ip add 148.60.128.33 255.255.255.240
 ip helper-address 148.60.128.97 
+standby 1 ip 148.60.128.35
+standby 1 priority 150
 no shut
 
 int gig0/0.66
 encapsulation dot1q 66
 ip add 148.60.128.49 255.255.255.240
 ip helper-address 148.60.128.97 
+standby 2 ip 148.60.128.51
+standby 2 priority 150
 no shut
 
 int gig0/0.67
 encapsulation dot1q 67
 ip add 148.60.128.65 255.255.255.240
-ip helper-address 148.60.128.97 
+ip helper-address 148.60.128.97
+standby 3 ip 148.60.128.67
+standby 3 priority 150 
 no shut
 
 int gig0/0.68
 encapsulation dot1q 68
 ip add 148.60.128.81 255.255.255.240
 ip helper-address 148.60.128.97
+standby 4 ip 148.60.128.85
+standby 4 priority 150 
 no shut
 
 int gig0/0.69
@@ -51,3 +59,7 @@ encapsulation dot1q 69
 ip add 148.60.128.107 255.255.255.240
 ip helper-address 148.60.128.97 
 no shut
+
+int gig0/0.65 
+
+standby 1
