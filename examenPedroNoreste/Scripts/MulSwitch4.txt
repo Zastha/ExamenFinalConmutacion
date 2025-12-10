@@ -124,3 +124,14 @@ interface Vlan100
 
  !!!spanning tree
  spanning-tree vlan 100 root primary
+
+ !!!seguridad
+   int g1/0/1
+  switchport port-security violation shutdown
+  switchport port-security mac-address sticky
+    int g1/0/12
+  switchport port-security violation shutdown
+  switchport port-security mac-address sticky
+    int g1/0/16
+  switchport port-security violation shutdown
+  switchport port-security mac-address sticky
