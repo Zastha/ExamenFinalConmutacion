@@ -87,3 +87,8 @@ ip helper-address 148.60.128.97
 no shut
 
 ip default-gateway 148.60.128.3
+
+int gig1/0/10
+switchport mode trunk
+switchport trunk native vlan 69
+no shut

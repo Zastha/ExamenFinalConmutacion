@@ -48,6 +48,3 @@ vtp domain sureste.com
 int vlan 69
 ip add 148.60.128.103 255.255.255.240
 no shut
-
-spanning-tree mode pvst
-
