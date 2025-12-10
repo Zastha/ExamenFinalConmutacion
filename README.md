@@ -36,7 +36,7 @@ La región Centro está encargada de:
 - **SSH**  
 
 ### Topología
-<img width="1037" height="602" alt="Captura de pantalla 2025-12-10 031322" src="https://github.com/user-attachments/assets/777522df-35b0-4ce6-a4bb-41a468282658" />
+![WhatsApp Image 2025-12-10 at 3 43 07 AM](https://github.com/user-attachments/assets/dbea333e-de21-43cd-a7e1-11160dbdda1c)
 
 ---
 
@@ -52,7 +52,7 @@ Responsabilidades:
 - **SSH**  
 
 ### Topología
-<img width="804" height="560" alt="Captura de pantalla 2025-12-10 031418" src="https://github.com/user-attachments/assets/8be888b5-c791-44fe-8d99-74e09ca06ca8" />
+![WhatsApp Image 2025-12-10 at 4 06 30 AM](https://github.com/user-attachments/assets/27434bb9-73eb-4a15-8761-051e35ca9ada)
 
 ---
 
@@ -70,7 +70,7 @@ La región Noroeste está encargada de:
 - **SSH**  
 
 ### Topología
-<img width="777" height="597" alt="Captura de pantalla 2025-12-10 031519" src="https://github.com/user-attachments/assets/1c8e8373-791b-41d3-97c2-fa6dbdef2d4e" />
+![WhatsApp Image 2025-12-10 at 4 09 33 AM](https://github.com/user-attachments/assets/612ec029-1c00-4360-a682-5d5e5bf8532b)
 
 ---
 
@@ -87,4 +87,4 @@ Responsabilidades:
 - **SSH**  
 
 ### Topología
-<img width="1011" height="586" alt="Captura de pantalla 2025-12-10 031556" src="https://github.com/user-attachments/assets/b1789aac-8ac1-4a11-a2a0-a9d4145f137b" />
+![WhatsApp Image 2025-12-10 at 4 07 30 AM](https://github.com/user-attachments/assets/782cc600-fb23-4e14-8f5c-678264fe396a)
