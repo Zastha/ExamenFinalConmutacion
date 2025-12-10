@@ -1,36 +1,36 @@
-ena
-conf t
+enable
+configure terminal
 hostname MultiSwitch2
 
 ip default-gateway 148.60.64.8
 
-int range g1/0/22-24
-sw
-sw tr encapsulation dot1q
-sw mode tr
+interface range g1/0/22-24
+switchport
+switchport trunk encapsulation dot1q
+switchport mode trunk
 switchport trunk allowed vlan 1
 switchport trunk allowed vlan 97-100
 
-//Vlan 97 - Gestion_de_TI
+!!!!Vlan 97 - Gestion_de_TI
 vlan 97
 name Gestion_de_TI
 
-int vlan 97
-ip add 148.60.64.6 255.255.255.240
+interface vlan 97
+ip address 148.60.64.6 255.255.255.240
 
-//Vlan 98 - Ventas
+!!!!Vlan 98 - Ventas
 vlan 98
 name Ventas
 
-//vlan 99 - Compras
+!!!!vlan 99 - Compras
 vlan 99
 name Compras
 
-//Vlan 100 - Servicios
+!!!!Vlan 100 - Servicios
 vlan 100
 name Servicios
 
-// Config SSH
+!!!!Config SSH
 ip domain-name juanmark.com 
 crypto key generate rsa 
 1024 
@@ -42,5 +42,5 @@ exit
 
 ip ssh version 2
 
-//spanning tree
+!!!!spanning tree
 spanning-tree vlan 97 root primary

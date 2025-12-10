@@ -1,52 +1,52 @@
-ena
-conf t
+enable
+configure terminal
 hostname MultiSwitch1
 
 ip default-gateway 148.60.64.8
 
-int range g1/0/22-24
-sw
-sw tr encapsulation dot1q
-sw mode tr
+interface range g1/0/22-24
+switchport
+switchport trunk encapsulation dot1q
+switchport mode trunk
 
-//Vlan 97 - Gestion_de_TI
+!!!!Vlan 97 - Gestion_de_TI
 vlan 97
 name Gestion_de_TI
 
-int vlan 97
-ip add 148.60.64.5 255.255.255.240
+interface vlan 97
+ip address 148.60.64.5 255.255.255.240
 
-//Vlan 98 - Ventas
+!!!!Vlan 98 - Ventas
 vlan 98
 name Ventas
 
-//vlan 99 - Compras
+!!!!vlan 99 - Compras
 vlan 99
 name Compras
 
-int range g1/0/7-9
+interface range g1/0/7-9
 spanning-tree portfast
-sw mode acc
-sw acc vlan 99
+switchport mode access
+switchport access vlan 99
 exit
 
-int vlan 99
-ip add 148.60.64.33	255.255.255.240
+interface vlan 99
+ip address 148.60.64.33	255.255.255.240
 
-//Vlan 100 - Servicios
+!!!!Vlan 100 - Servicios
 vlan 100
 name Servicios
 
-int range g1/0/10-12
+interface range g1/0/10-12
 spanning-tree portfast
-sw mode acc
-sw acc vlan 100
+switchport mode access
+sw access vlan 100
 exit
 
-int vlan 100
+interface vlan 100
 ip add 148.60.64.49 255.255.255.240
 
-// Config SSH
+!!!!config SSH
 ip domain-name juanmark.com 
 crypto key generate rsa 
 1024 
@@ -60,3 +60,11 @@ ip ssh version 2
 
 !!!spanning-tree
 spanning-tree vlan 99 root primary
+
+!!!seguridad
+      int g1/0/11
+  switchport port-security violation shutdown
+  switchport port-security mac-address sticky
+        int g1/0/8
+  switchport port-security violation shutdown
+  switchport port-security mac-address sticky

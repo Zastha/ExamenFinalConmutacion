@@ -1,75 +1,75 @@
-ena
-conf t
+enable
+configure terminal
 hostname MultiSwitch4
 
-//Vlan 97 - Gestion_de_TI
+!!!!Vlan 97 - Gestion_de_TI
 vlan 97
 name Gestion_de_TI
 
 
-// Vlan 98 - Ventas
+!!!!Vlan 98 - Ventas
 vlan 98
 name Ventas
 
-int range g1/0/1-10
+interface range g1/0/1-10
 spanning-tree portfast
-sw mode acc
-sw acc vlan 98
+switchport mode acc
+switchport access vlan 98
 exit
 
 interface g1/0/22
 switchport mode access
 switchport access vlan 98
 
-int range g1/0/23-24
-sw
-sw tr encapsulation dot1q
-sw mode tr
+interface range g1/0/23-24
+switchport
+switchport trunk encapsulation dot1q
+switchport mode trunk
 switchport trunk allowed vlan 1
 switchport trunk allowed vlan 97-100
 
-int vlan 97
+interface vlan 97
 ip add 148.60.64.9 255.255.255.240
 
-int vlan 98
+interface vlan 98
 ip add 148.60.64.17 255.255.255.240
 
-// Vlan 99 - Compras
+!!!!Vlan 99 - Compras
 vlan 99
 name Compras
 
-int range g1/0/11-14
+interface range g1/0/11-14
 spanning-tree portfast
-sw mode acc
-sw acc vlan 99
+switchport mode access
+switchport access vlan 99
 exit
 
 interface range g1/0/2-11
 shutdown
-int range g1/0/13-15
+interface range g1/0/13-15
 shutdown
-int range g1/0/17-21
+interface range g1/0/17-21
 shutdown
-int range  g1/1/1-4
+interface range  g1/1/1-4
 shutdown
 
-int vlan 99
-ip add 148.60.64.35	255.255.255.240
+interface vlan 99
+ip address 148.60.64.35	255.255.255.240
 
-//Vlan 100 Servicios
+!!!!Vlan 100 Servicios
 vlan 100
 name Servicios
 
-int range g1/0/15-19
+interface range g1/0/15-19
 spanning-tree portfast
 sw mode acc
 sw acc vlan 100
 exit
 
-int vlan 100
-ip add 148.60.64.50 255.255.255.240
+interface vlan 100
+ip address 148.60.64.50 255.255.255.240
 
-// Config SSH
+!!!!Config SSH
 ip domain-name juanmark.com 
 crypto key generate rsa 
 1024 
@@ -126,12 +126,12 @@ interface Vlan100
  spanning-tree vlan 100 root primary
 
  !!!seguridad
-   int g1/0/1
+interface g1/0/1
   switchport port-security violation shutdown
   switchport port-security mac-address sticky
-    int g1/0/12
+interface g1/0/12
   switchport port-security violation shutdown
   switchport port-security mac-address sticky
-    int g1/0/16
+interface g1/0/16
   switchport port-security violation shutdown
   switchport port-security mac-address sticky
