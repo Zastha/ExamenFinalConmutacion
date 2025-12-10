@@ -84,3 +84,18 @@ network 148.60.200.0
 network 148.60.208.0
 network 148.60.216.0
 network 148.60.224.0
+
+
+!!!Configuracion SSH
+ip domain-name juanmark.com
+
+crypto key generate rsa
+
+username juan secret mark
+
+line vty 0 15
+transport input SSH
+login local
+exit
+
+ip ssh version 2
