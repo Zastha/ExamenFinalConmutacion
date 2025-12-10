@@ -14,6 +14,9 @@ int gig0/1
 sw mo trunk
 sw trunk allowed vlan 5,6,7,9
 switchport nonegotiate
+int f0/2
+sw mo trunk
+switchport nonegotiate
 
 ip default-gateway 148.60.0.1
 //ipv6 default-gateway 2006:AFEA:B0CA:1::1

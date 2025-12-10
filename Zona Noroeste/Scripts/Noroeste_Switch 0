@@ -59,5 +59,6 @@ interface range f0/2-4
 switchport port-security violation shutdown
 
 //Trunking
+int f0/1
 switchport mode trunk
 switchport nonegotiate
