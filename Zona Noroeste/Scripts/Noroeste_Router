@@ -110,3 +110,8 @@ ipv6 nd managed-config-flag
 //Port Security
 interface range g0/1-2
 shutdown
+//Conexión Inter-Regional
+int se0/0/0 
+ip address 148.60.64.86 255.255.255.252
+int se0/0/1
+ip address 148.60.232.1 255.255.255.252
