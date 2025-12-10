@@ -5,21 +5,19 @@ conf t
 hostname MS1
 
 
-!!!Asignacion de 
+!!!Asignacion de direccion en vlan de Gestion
 int vlan 33
 ip address 148.60.192.3 255.255.248.0
 no shut
 
-!!!Habilitar tecnologia DAI 
-ip dhcp snooping
-ip dhcp snooping vlan 33-37
-ip arp inspection vlan 33-37
+
+
 
 !!!Configuracion de Etherchannel a SW0 con Trust para DHCP Server
 interface range g1/0/1-2
 channel-group 1 mode active
-ip dhcp snooping trust
-ip arp inspection trust
+no ip dhcp snooping trust
+no ip arp inspection trust
 
 exit
 
@@ -71,5 +69,21 @@ switchport port-security violation restrict
 
 ip default-gateway 148.60.192.1
 
+
+!!!Configuracion vtp
 vtp mode client
 vtp domain centro.com
+
+!!!Configuracion SSH
+ip domain-name juanmark.com
+
+crypto key generate rsa
+
+username juan secret mark
+
+line vty 0 15
+transport input SSH
+login local
+exit
+
+ip ssh version 2
