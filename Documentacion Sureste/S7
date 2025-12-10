@@ -41,6 +41,7 @@ shutdown
 int range f0/4-16
 switchport mode access
 switchport port-security mac-address sticky
+switchport port-security violation shutdown
 
 vtp mode client
 vtp domain sureste.com
