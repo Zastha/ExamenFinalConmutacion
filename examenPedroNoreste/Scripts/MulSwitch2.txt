@@ -11,6 +11,10 @@ switchport mode trunk
 switchport trunk allowed vlan 1
 switchport trunk allowed vlan 97-100
 
+!!!!VTP
+vtp mode server
+vtp domain juanMark.com
+
 !!!!Vlan 97 - Gestion_de_TI
 vlan 97
 name Gestion_de_TI

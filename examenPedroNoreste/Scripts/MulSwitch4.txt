@@ -2,10 +2,13 @@ enable
 configure terminal
 hostname MultiSwitch4
 
+!!!!VTP
+vtp mode client
+vtp domain juanMark.com
+
 !!!!Vlan 97 - Gestion_de_TI
 vlan 97
 name Gestion_de_TI
-
 
 !!!!Vlan 98 - Ventas
 vlan 98
@@ -115,7 +118,7 @@ interface Vlan97
 
 interface Vlan98
  ip address 148.60.64.20 255.255.255.240
-!
+
 interface Vlan99
  ip address 148.60.64.34 255.255.255.240
 

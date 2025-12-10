@@ -9,6 +9,10 @@ switchport
 switchport trunk encapsulation dot1q
 switchport mode trunk
 
+!!!!VTP
+vtp mode client
+vtp domain juanMark.com
+
 !!!!Vlan 97 - Gestion_de_TI
 vlan 97
 name Gestion_de_TI
