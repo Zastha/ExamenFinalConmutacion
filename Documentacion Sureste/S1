@@ -42,48 +42,30 @@ vtp domain sureste.com
 spanning-tree vlan 69 root primary 
 
 
-ip dhcp excluded-address 148.60.128.33
-ip dhcp excluded-address 148.60.128.49
-ip dhcp excluded-address 148.60.128.65
-ip dhcp excluded-address 148.60.128.81
+ip dhcp excluded-address 148.60.128.33 148.60.128.35
+ip dhcp excluded-address 148.60.128.49 148.60.128.51
+ip dhcp excluded-address 148.60.128.65 148.60.128.67
+ip dhcp excluded-address 148.60.128.81 148.60.128.82
+ip dhcp excluded-address 148.60.128.85
 
 ip dhcp pool Ventas
 network 148.60.128.32 255.255.255.240
-default-router 148.60.128.33
+default-router 148.60.128.35
 
 ip dhcp pool TI
 network 148.60.128.48 255.255.255.240
-default-router 148.60.128.49
+default-router 148.60.128.51
 
 ip dhcp pool Compras
 network 148.60.128.64 255.255.255.240
-default-router 148.60.128.65
+default-router 148.60.128.67
 
 ip dhcp pool Mkt
 network 148.60.128.80 255.255.255.240
-default-router 148.60.128.81
-
-int vlan 65
-ip add 148.60.128.33 255.255.255.240
-no shut
-
-int vlan 66
-ip add 148.60.128.49 255.255.255.240
-no shut
-
-int vlan 67
-ip add 148.60.128.65 255.255.255.240
-no shut
-
-int vlan 68
-ip add 148.60.128.81 255.255.255.240
-no shut
+default-router 148.60.128.85
 
 int vlan 69 
-ip add 148.60.128.97 255.255.255.240
-no shut
-
-ip helper-address 148.60.128.97 
+ip add 148.60.128.100 255.255.255.240
 no shut
 
 ip default-gateway 148.60.128.3
