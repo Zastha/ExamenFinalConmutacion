@@ -57,3 +57,5 @@ switchport trunk allowed vlan 65,66,67,68,69
 int vlan 69
 ip add 148.60.128.99 255.255.255.240
 no shut
+
+spanning-tree vlan 67 root primary

@@ -39,7 +39,7 @@ switchport trunk allowed vlan 65,66,67,68,69
 vtp mode client
 vtp domain sureste.com
 
-spanning-tree vlan 66
+spanning-tree vlan 65 root primary
 
 
 int gig1/0/6
